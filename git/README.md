@@ -47,7 +47,7 @@ Github 서버와 나의 로컬 저장소는 SSH키로 인증하기 때문에 내
 
 ### 2.1 키 확인
 `~/.ssh` 하위 폴더가 아래와 같다면 바로 [Github에 키를 등록](#23-github에-키-등록하기)하면 된다.
-```
+```bash
 $ cd ~/.ssh
 $ ls
 authorized_keys  id_dsa       id_dsa.pub
@@ -60,7 +60,7 @@ authorized_keys  id_dsa       id_dsa.pub
 
 ### 2.2 키 생성
 `~/.ssh` 하위 폴더에 키가 생성되지 않았다면 `ssh-keygen` 명령어로 key를 생성한다.(엔터키 연타)
-```
+```bash
 $ ssh-keygen
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/schacon/.ssh/id_rsa):
@@ -82,7 +82,7 @@ The key fingerprint is:
 
 
 - `id_rsa.pub` 파일의 내용을 복사
-```
+```bash
 $ cat id_rsa.pub
 ssh-rsa AABBB3NzaC1yc2EAAAADAQABAAABAQDnM+nthoxUlC/KO7tvw1khJ2tCWWE+CVd/z4W1OwuT4KcpVWSIKbyr5oFWPsBJfFcfnZbjgAxymrDRXc+Q5/N1KYRhjXX1IiIyGEkkLe3Y0ZMN4Z/RfDPeJI/QblfY8LYGd0zHKdzO/P2n34IZmL8/3as5ZwQJRVs9s7Y21jTaGSX0J0BYvrwCnoKSiYKI5MPJtTY3gW0pb8nSeTt7Hb5q+nDOcGIGd8or6b84jejWVJgnjtudEQyO3CjC8UweVTGyGXi9ROnDW8Q2DpAIPWt5zqXpWV2S+V+nZbVl7CrMGYoYnIa9qyLt4rpl6EkZoBzsq51LTHFfHSkoVMTmgu13 user@AL01248003.local
 ```
@@ -92,3 +92,18 @@ ssh-rsa AABBB3NzaC1yc2EAAAADAQABAAABAQDnM+nthoxUlC/KO7tvw1khJ2tCWWE+CVd/z4W1OwuT
 ![](assets/2019-06-17-22-11-04.png)
 
 ## 3. branch따서 PR 올리기
+
+
+### 3.1 브랜치 생성
+```bash
+git clone git@github.com:LandvibeDev/gofka-wiki.git
+cd gofka-wiki
+git checkout -b mybranch  # 새로운 브랜치 생성
+```
+
+### 3.2 변경 사항 원격 저장소로 푸쉬
+```bash
+git add .  # local stage에 추가
+git commit -am "my commit message" # local repo에 커밋
+git push origin mybranch # remote repo로 푸쉬, remote repo에 없다면 branch가 새로 생성됨
+```
