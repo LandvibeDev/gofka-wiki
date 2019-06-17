@@ -107,3 +107,14 @@ git add .  # local stage에 추가
 git commit -am "my commit message" # local repo에 커밋
 git push origin mybranch # remote repo로 푸쉬, remote repo에 없다면 branch가 새로 생성됨
 ```
+
+### 3.3 Github에서 PR 생성
+- 변경 사항을 Remote 서버에 push 하면 메인에 `Compare & pull request` 버튼이 나타난다. 이 버튼을 클릭.
+- 혹은 `Pull request` 탭 -> `New pull request` 버튼을 클릭.
+  
+![](assets/2019-06-17-22-25-12.png)
+
+- Pull request의 제목, 내용, 변경된 파일 내용들이 보여진다.
+- `Create pull request` 버튼을 클릭하여 PR을 생성한다. 
+  
+![](assets/2019-06-17-22-25-00.png)
