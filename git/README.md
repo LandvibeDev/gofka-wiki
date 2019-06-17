@@ -118,3 +118,8 @@ git push origin mybranch # remote repo로 푸쉬, remote repo에 없다면 branc
 - `Create pull request` 버튼을 클릭하여 PR을 생성한다. 
   
 ![](assets/2019-06-17-22-25-00.png)
+
+- PR 생성이 완료된 모습
+![](assets/2019-06-17-22-31-25.png)
+![](assets/2019-06-17-22-31-03.png)
+![](assets/2019-06-17-22-31-09.png)
