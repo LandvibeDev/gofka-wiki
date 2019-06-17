@@ -1,11 +1,9 @@
 # Git
 
 - 목차
-  1. Git의 구조
-  2. ssh key 등록
-  3. 브랜치따서 PR 올리기
-
-
+  1. [Git의 구조](#1-git의-구조)
+  2. [ssh key 등록](#2-ssh-key-등록)
+  3. [브랜치따서 PR 올리기](#3-branch따서-pr-올리기)
 
 ## 1. Git의 구조
 
@@ -48,7 +46,7 @@ Github 서버와 나의 로컬 저장소는 SSH키로 인증하기 때문에 내
 참고한 사이트: https://git-scm.com/book/ko/v1/Git-%EC%84%9C%EB%B2%84-SSH-%EA%B3%B5%EA%B0%9C%ED%82%A4-%EB%A7%8C%EB%93%A4%EA%B8%B0
 
 ### 2.1 키 확인
-`~/.ssh` 하위 폴더가 아래와 같다면 바로 Github에 키를 등록하면 된다.
+`~/.ssh` 하위 폴더가 아래와 같다면 바로 [Github에 키를 등록](#23-github에-키-등록하기)하면 된다.
 ```
 $ cd ~/.ssh
 $ ls
