@@ -1,8 +1,6 @@
-####로컬에서 Kafka 실행해보기 
+## 로컬에서 Kafka 실행해보기 
 
-------------
-
-##### 기본 환경
+### 기본 환경
 
 - python 2.7
 
@@ -16,6 +14,7 @@ python version 확인.
 
 ```bash
 python --version
+Python 2.7.10
 ```
 
 
@@ -24,24 +23,12 @@ pip version 확인.
 
 ```bash
 pip --version
+pip 18.1 from /Library/Python/2.7/site-packages/pip-18.1-py2.7.egg/pip (python 2.7)
 ```
 
 
 
-만약 pip가
-
-```
-pip 19.1.1 from /Users/minkyojung/Library/Python/3.6/lib/python/site-packages/pip (python 3.6)
-```
-
-Python 3.6을 사용할 경우, 
-
-```
-curl -O http://python-distribute.org/distribute_setup.py
-sudo python distribute_setup.py
-sudo rm distribute_setup.py
-sudo easy_install pip
-```
+만약 pip가 Python 3.6을 사용할 경우, pip를 재설치.
 
  distribute_setup.py를 curl을 이용해서 다운 받은 후, 해당 파일을 실행. 
 
@@ -49,9 +36,19 @@ sudo easy_install pip
 
 pip easy_install을 수행.
 
+```
+pip 19.1.1 from /Users/minkyojung/Library/Python/3.6/lib/python/site-packages/pip (python 3.6)
+
+# 재설치
+curl -O http://python-distribute.org/distribute_setup.py
+sudo python distribute_setup.py
+sudo rm distribute_setup.py
+sudo easy_install pip
+```
 
 
-그 후,
+
+정상적으로 수행이 된 경우,
 
 ```bash
 pip2 --version
@@ -60,11 +57,13 @@ pip 18.1 from /Library/Python/2.7/site-packages/pip-18.1-py2.7.egg/pip (python 2
 
 위와 같이 나오게 된다.
 
+
+
+pip로 docker, ansible 등 필요한 것들을 다운 받도록 한다.
+
 ```bash
 sudo -H pip2 install docker==2.2.1 ansible==2.5.2 jinja2==2.9.6 httplib2==0.9.2 requests==2.10.0
 ```
-
-pip로 docker, ansible 등 필요한 것들을 다운 받도록 한다.
 
 
 
@@ -79,11 +78,30 @@ sudo -H pip install docker==2.2.1 ansible==2.5.2 jinja2==2.9.6  httplib2==0.9.2 
 
 
 
-Ip alias 추가. 
+Ip alias 추가. alias 하는 이유는
+
+- linux에서는 docker ethernet의 ip가 172.17.0.1
+- mac에서는 **light한 vm에 docker가 구동되는 방식**이기 때문에 **172.17.0.1 ip의 docker ethernet으로 접근이 불가능함**
+- `lo0`에 `172.17.0.1/24` 대역 ip들을 바인딩 시켜서 `172.17.0.1/24`로 요청하는 패킷들을 localhost로 향하게함
+- 즉 `127.0.0.1` == `172.17.0.1`로 만드는 것
+- docker 컨테이너에서 host로 포트포워딩을 해놨다면, `172.17.0.1/24`로의 요청들이 docker 컨테이너로 향하게됨
 
 ```bash
 sudo ifconfig lo0 alias 172.17.0.1/24  
 ```
+
+```bash
+$ ifconfig
+lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> mtu 16384
+	options=1203<RXCSUM,TXCSUM,TXSTATUS,SW_TIMESTAMP>
+	inet 127.0.0.1 netmask 0xff000000
+	inet6 ::1 prefixlen 128
+	inet6 fe80::1%lo0 prefixlen 64 scopeid 0x1
+	inet 172.17.0.1 netmask 0xffffff00 # 127.0.0.1과 같음
+	nd6 options=201<PERFORMNUD,DAD>
+```
+
+
 
 
 
@@ -126,27 +144,26 @@ https://kafka.apache.org/quickstart에 접속해서, kafka version 2.12-2.2.1 bi
 
 bin 폴더 아래에서 다음 명령어를 수행.
 
+
+
 ##### topic 생성
 
+Kafka topic을 testTopic이름으로 생성.
+
 ```bash
+cd kafka_2.12-2.2.0/bin
 ./kafka-topics.sh --bootstrap-server 172.17.0.1:9093 --topic testTopic --create --partitions 1 --replication-factor 1
 ```
-
-Kafka topic을 testTopic이름으로 생성.
 
 
 
 ##### producer test
 
-```bash
-./kafka-producer-perf-test.sh --topic testTopic --throughput 500--record-size 2000 --num-records 200000 --producer-props bootstrap.servers=172.17.0.1:9093
-```
-
  producer test script 수행.
 
+```bash
+./kafka-producer-perf-test.sh --topic testTopic --throughput 500--record-size 2000 --num-records 200000 --producer-props bootstrap.servers=172.17.0.1:9093
 
-
-```
 2502 records sent, 500.3 records/sec (0.95 MB/sec), 7.1 ms avg latency, 247.0 ms max latency.
 2510 records sent, 501.8 records/sec (0.96 MB/sec), 1.6 ms avg latency, 21.0 ms max latency.
 2501 records sent, 500.2 records/sec (0.95 MB/sec), 3.1 ms avg latency, 100.0 ms max latency.
