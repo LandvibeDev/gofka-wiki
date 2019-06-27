@@ -8,7 +8,7 @@
 
 
 
-##### Ansible을 이용한 kafka Setting
+### Ansible을 이용한 kafka Setting
 
 python version 확인.
 
