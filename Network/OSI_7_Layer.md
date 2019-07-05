@@ -24,7 +24,7 @@
 6. 6계층 : Presentation Layer
 	- Data를 안전하게 전송하기 위해 암호/복호화 하는 작업 수행... 이라고 나와있는데 사실 잘 모르겠음
 7. 7계층 : Application Layer
-	-  User가 직접 볼 수 있는 (최종 사용자에게 가장 가까운) 계층
+	- User가 직접 볼 수 있는 (최종 사용자에게 가장 가까운) 계층
 ![OSI_7_Layer](https://t1.daumcdn.net/cfile/tistory/99B9493359B6408E23)
 * 최근에는 OSI 7 Layer가 아니라 TCP/IP 4 layer model로서 네트워크를 표현하는 경우가 훨씬 많음 (불필요한 계층 통합 및 제거)
 # 각 계층에서 사용하는 주소
@@ -43,6 +43,10 @@
 	- 0~1023번 port의 경우 일반적으로 잘 알려진 (Well-Known) 포트 번호로 구성
 	- 대표적으로 HTTP 80, HTTPS 443, SSH 22, DNS 53, FTP 20/21 등
 	- 각 Service를 제공하기 위한 구분자라고 생각해도 될 듯
+# Data의 Encapsulation 과정
+![Data_Encapsulation](https://i.stack.imgur.com/Hi3zX.jpg)
+# Sender와 Recevier측에서의 대략적인 전송과정
+![Transmission](https://ccnabasics.files.wordpress.com/2012/12/122012_1626_osireferenc6.png?w=600)
 <hr/>
 <hr/>
 #### Written by Woogon
