@@ -25,7 +25,8 @@
 	-
 7. 7계층 : Application Layer
 	-  
-* ??
+![OSI_7_Layer](https://t1.daumcdn.net/cfile/tistory/99B9493359B6408E23)
+* 
 * ???
 * ??
 * ??????.
