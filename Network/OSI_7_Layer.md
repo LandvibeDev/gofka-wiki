@@ -27,9 +27,22 @@
 	-  User가 직접 볼 수 있는 (최종 사용자에게 가장 가까운) 계층
 ![OSI_7_Layer](https://t1.daumcdn.net/cfile/tistory/99B9493359B6408E23)
 * 최근에는 OSI 7 Layer가 아니라 TCP/IP 4 layer model로서 네트워크를 표현하는 경우가 훨씬 많음 (불필요한 계층 통합 및 제거)
-* ??
-* ??????.
+# 각 계층에서 사용하는 주소
+* Data-link layer에서 사용하는 MAC Address
+	- 6byte로 구성 ex) AA:BB:CC:DD:EE:FF
+	- 주로 NIC 카드에 고유하게 설정되어있고, 전세계에서 유일한 주소 (단, 중복되는 경우가 있기는 함)
+	- MAC address를 보고 NIC 카드의 Vendor사를 알 수 있음
+* Network layer에서 사용하는 IP Address
+	- 4byte로 구성 ex) 172.23.35.12
+	- Internet과 통신이 가능한 public IP, Internet과 통신이 불가능한 private IP 영역이 존재
+	- Public IP는 전세계에서 유일한 주소, Private IP의 경우 중복 가능
+	- 4byte(32bit)로 표현할 수 있는 IP의 개수는 약 43억개, 연구용/예약된 IP를 제외하면 훨씬 적은 수
+	- 최근 IoT 기기의 보급 등으로 IP 주소가 모자라짐에 따라 128bit IPv6 주소로의 변환 얘기가 나오고 있지만 적극적이지는 않음
+* Transport layer에서 사용하는 port number
+	- 16bit로 구성 (0~65535)
+	- 0~1023번 port의 경우 일반적으로 잘 알려진 (Well-Known) 포트 번호로 구성
+	- 대표적으로 HTTP 80, HTTPS 443, SSH 22, DNS 53, FTP 20/21 등
+	- 각 Service를 제공하기 위한 구분자라고 생각해도 될 듯
 <hr/>
 <hr/>
-### This is H3
 #### Written by Woogon
