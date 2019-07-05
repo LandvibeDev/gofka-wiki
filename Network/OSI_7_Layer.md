@@ -20,14 +20,13 @@
 	- Segment의 전송 방식을 담당 (가장 대표적으로 신뢰성있게 전송하는 TCP, 그 반대인 UDP)
 	- Load Balancer (Port를 이용)
 5. 5계층 : Session Layer
-	- 
+	- Session을 담당하는 계층(?).. 잘 모르겠음
 6. 6계층 : Presentation Layer
-	-
+	- Data를 안전하게 전송하기 위해 암호/복호화 하는 작업 수행... 이라고 나와있는데 사실 잘 모르겠음
 7. 7계층 : Application Layer
-	-  
+	-  User가 직접 볼 수 있는 (최종 사용자에게 가장 가까운) 계층
 ![OSI_7_Layer](https://t1.daumcdn.net/cfile/tistory/99B9493359B6408E23)
-* 
-* ???
+* 최근에는 OSI 7 Layer가 아니라 TCP/IP 4 layer model로서 네트워크를 표현하는 경우가 훨씬 많음 (불필요한 계층 통합 및 제거)
 * ??
 * ??????.
 <hr/>
